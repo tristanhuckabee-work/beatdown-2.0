@@ -412,8 +412,18 @@ git push origin dev
 
 ## Wrapping up the Backend
 
-**Do not remove the `POST /api/test` route just yet. You will be using it in the
-next part.**
+**Do not remove the `POST /api/test` route just yet. You will be using it much
+later when setting up your frontend.**
+
+### Refactor to add `firstName` and `lastName` attributes
+
+Now, try to refactor your code to add this simple change.
+
+Update your server files to add `firstName` and `lastName` attributes to a
+`User` in your database. **Make sure to update your migration and model files
+and your route handlers** to reflect this change!
+
+### Next Steps
 
 Awesome work! You just finished setting up the entire backend for this project!
 In the next part, you will deploy the application to Heroku.
