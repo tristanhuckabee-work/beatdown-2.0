@@ -171,7 +171,7 @@ module.exports = {
 };
 ```
 
-Initialize Sequelize to the `db` folder by running:
+Initialize Sequelize to the `db` folder by running the following command in your `backend` directory:
 
 ```bash
 npx sequelize init
