@@ -36,6 +36,13 @@ build
 
 ## Git
 
+Make sure your local machine's Git configuration initializes new Git repositories
+with a default branch of `main` by running:
+
+```bash
+git config --global init.defaultBranch main
+```
+
 Initiate Git in the project folder by running the following command in the
 `authenticate-me` folder:
 
