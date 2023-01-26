@@ -14,8 +14,6 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(routes);
-
 //! Security Middleware
 if( !isProduction ) {
   app.use(cors());
@@ -34,6 +32,9 @@ app.use(
     }
   })
 );
+
+app.use(routes);
+
 
 
 
