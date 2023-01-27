@@ -1,7 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model, Validator } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -14,10 +13,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    hashedPass: DataTypes.STRING,
-    profilePic: DataTypes.INTEGER
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 30],
+        isNotEmail(val) {
+          if (Validator.isEmail(val)) {
+            throw new Error('Cannot be an email.')
+          }
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3,256],
+        isEmail: true
+      }
+    },
+    hashedPass: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [60, 60],
+      }
+    },
+    image: {
+      type: DataTypes.INTEGER,
+    },
+    biography: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 450]
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',

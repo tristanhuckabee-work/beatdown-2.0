@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      profilePic: {
+      image: {
         type: Sequelize.INTEGER
       },
       createdAt: {
