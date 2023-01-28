@@ -14,21 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     static getCurrentUserById(id) {
       return User.scope('currentUser').findByPk(id);
     }
-    static async login({cred, pass}) {
+    static async login({credential, password}) {
+      console.log(credential, password, '\n\n\n')
       const {Op} = require('sequelize');
       const user = await User.scope('loginUser').findOne({
         where: {
           [Op.or]: {
-            username: cred,
-            email: cred
+            username: credential,
+            email: credential
           }
         }
       });
-      if (user && user.validatePassword(pass)) {
+      if (user && user.validatePassword(password)) {
         return await User.scope('currentUser').findByPk(user.id);
       }
     }
-    static async signup({username, email, pass}) {
+    static async signup({username, email, password}) {
       const hashedPass = bcrypt.hashSync(pass);
       const user = await User.create({ username, email, hashedPass })
       return await User.scope('currentUser').findByPk(user.id);
