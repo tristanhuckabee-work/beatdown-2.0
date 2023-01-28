@@ -23,6 +23,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      biography: {
+        type: Sequelize.STRING
+      },
       image: {
         type: Sequelize.INTEGER
       },
