@@ -1,5 +1,6 @@
 const router = require('express').Router();
-
+const sessionRouter = require('./session');
+const userRouter = require('./users');
 
 router.get('/csrf/restore', (req, res) => {
   const csrfToken = req.csrfToken();
